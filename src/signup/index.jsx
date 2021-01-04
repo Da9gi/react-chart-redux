@@ -11,7 +11,6 @@ function SignUp({ SHOWDATA }) {
   const onSubmit = async (values) => {
     await delay(300);
     SHOWDATA(values);
-    alert(JSON.stringify(values, 0, 2));
   };
 
   const required = (value) => (value ? undefined : "*");
