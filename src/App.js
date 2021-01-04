@@ -1,14 +1,35 @@
-// import logo from "./logo.svg";
+import { Provider } from "react-redux";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import "./App.css";
 import PieChart from "./pie-chart/index";
+import SignUp from "./signup/index";
+import ShowRedux, { Store } from "./signup/showSignUp";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <PieChart />
-      </header>
-    </div>
+    <Router>
+      <Link to="/">Home</Link>
+      <Link to="/pie-chart">Pie Chart</Link>
+      <Link to="/signUp">Sign Up</Link>
+      <Link to="/reduxData">Show Redux</Link>
+      <Switch>
+        <header className="App-header">
+          <Route path="/pie-chart">
+            <PieChart></PieChart>
+          </Route>
+          <Route path="/signUp">
+            <Provider store={Store}>
+              <SignUp />
+            </Provider>
+          </Route>
+          <Route path="/reduxData">
+            <Provider store={Store}>
+              <ShowRedux />
+            </Provider>
+          </Route>
+        </header>
+      </Switch>
+    </Router>
   );
 }
 
